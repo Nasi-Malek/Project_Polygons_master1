@@ -1,0 +1,22 @@
+﻿Rebuild started at 14:58...
+1>------ Rebuild All started: Project: ClassLibrary, Configuration: Debug Any CPU ------
+Restored C:\Project_1\Project_Polygons-master\Project_Polygons-master\Project_Polygons\Project_Polygons.csproj (in 251 ms).
+Restored C:\Project_1\Project_Polygons-master\Project_Polygons-master\ClassLibrary\ClassLibrary.csproj (in 269 ms).
+Restored C:\Project_1\Project_Polygons-master\Project_Polygons-master\RSPGameApp\RSPGameApp.csproj (in 278 ms).
+Restored C:\Project_1\Project_Polygons-master\Project_Polygons-master\ShapeApp\ShapeApp.csproj (in 288 ms).
+Restored C:\Project_1\Project_Polygons-master\Project_Polygons-master\CalculatorApp\CalculatorApp.csproj (in 296 ms).
+1>C:\Project_1\Project_Polygons-master\Project_Polygons-master\ClassLibrary\Data\AppDbContextFactory.cs(16,45,16,97): warning CS8602: Dereference of a possibly null reference.
+1>ClassLibrary -> C:\Project_1\Project_Polygons-master\Project_Polygons-master\ClassLibrary\bin\Debug\net9.0\ClassLibrary.dll
+1>Done building project "ClassLibrary.csproj".
+2>------ Rebuild All started: Project: ShapeApp, Configuration: Debug Any CPU ------
+3>------ Rebuild All started: Project: RSPGameApp, Configuration: Debug Any CPU ------
+4>------ Rebuild All started: Project: CalculatorApp, Configuration: Debug Any CPU ------
+2>ShapeApp -> C:\Project_1\Project_Polygons-master\Project_Polygons-master\ShapeApp\bin\Debug\net9.0\ShapeApp.dll
+4>C:\Project_1\Project_Polygons-master\Project_Polygons-master\CalculatorApp\Handler\UpdateHandler.cs(51,55,51,73): warning CS8602: Dereference of a possibly null reference.
+3>RSPGameApp -> C:\Project_1\Project_Polygons-master\Project_Polygons-master\RSPGameApp\bin\Debug\net9.0\RSPGameApp.dll
+4>CalculatorApp -> C:\Project_1\Project_Polygons-master\Project_Polygons-master\CalculatorApp\bin\Debug\net9.0\CalculatorApp.dll
+4>Done building project "CalculatorApp.csproj".
+5>------ Rebuild All started: Project: Project_Polygons, Configuration: Debug Any CPU ------
+5>Project_Polygons -> C:\Project_1\Project_Polygons-master\Project_Polygons-master\Project_Polygons\bin\Debug\net9.0\Project_Polygons.dll
+========== Rebuild All: 5 succeeded, 0 failed, 0 skipped ==========
+========== Rebuild completed at 14:58 and took 04,311 seconds ==========
