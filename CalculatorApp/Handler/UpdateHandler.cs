@@ -1,6 +1,5 @@
 ﻿using Spectre.Console;
 
-
 namespace CalculatorApp.Handlers
 {
     public class UpdateHandler
@@ -14,7 +13,6 @@ namespace CalculatorApp.Handlers
 
         public void UpdateCalculation()
         {
-          
             try
             {
                 Console.Clear();
@@ -26,6 +24,13 @@ namespace CalculatorApp.Handlers
                 if (calculation is null)
                 {
                     AnsiConsole.Markup("[red]Calculation not found. Please check the ID and try again.[/]");
+                    Console.ReadKey();
+                    return;
+                }
+
+                if (calculation.IsDeleted)
+                {
+                    AnsiConsole.Markup("[red]This calculation has been deleted and cannot be updated.[/]");
                     Console.ReadKey();
                     return;
                 }
@@ -45,7 +50,6 @@ namespace CalculatorApp.Handlers
                     {
                         AnsiConsole.Markup("[green]Calculation updated successfully![/]\n");
 
-                     
                         var updatedCalculation = _repository.GetCalculationById(id);
                         AnsiConsole.Markup("[green]Updated Calculation Details:[/]\n");
                         AnsiConsole.Markup($"[yellow]{updatedCalculation.Num1} {updatedCalculation.Operation} {updatedCalculation.Num2} = {updatedCalculation.Result}[/]\n");
@@ -65,7 +69,6 @@ namespace CalculatorApp.Handlers
                 AnsiConsole.Markup($"[red]An error occurred: {ex.Message}[/]");
             }
         }
-       
 
         private double CalculateResult(double num1, double num2, string operation)
         {
@@ -98,8 +101,9 @@ namespace CalculatorApp.Handlers
                         : ValidationResult.Error("[red]ID must be positive.[/]")));
         }
     }
-
 }
+
+
 public class CalculationRecord
 {
     public int Id { get; set; }
@@ -108,5 +112,5 @@ public class CalculationRecord
     public string Operation { get; set; } = string.Empty;
     public double Result { get; set; }
     public DateTime Date { get; set; }
-    public bool IsDeleted { get; set; } // Added soft delete support
+    public bool IsDeleted { get; set; }
 }

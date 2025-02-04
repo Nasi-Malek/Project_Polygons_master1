@@ -64,9 +64,9 @@ namespace CalculatorApp
         public bool UpdateCalculation(int id, double newNum1, double newNum2, double newResult)
         {
             var record = _context.CalculationRecords.IgnoreQueryFilters().FirstOrDefault(cr => cr.Id == id);
-            if (record == null || record.IsDeleted) // Check if the record is soft-deleted
+            if (record == null || record.IsDeleted) 
             {
-                return false; // Prevent updating soft-deleted records
+                return false;
             }
 
             record.Num1 = newNum1;
