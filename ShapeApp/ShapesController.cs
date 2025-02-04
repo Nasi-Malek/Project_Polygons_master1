@@ -44,7 +44,7 @@ namespace ShapeApp
 
         public void ShowShapesMenu()
         {
-            while (true)
+            while (true) 
             {
                 try
                 {
