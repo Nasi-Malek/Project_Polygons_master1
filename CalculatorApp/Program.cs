@@ -3,14 +3,14 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CalculatorApp
 {
-    internal class Program
+    internal class Program 
     {
         static void Main(string[] args)
         {
             var serviceProvider = new ServiceCollection()
                 .AddLogging(configure => configure.AddConsole())
                 .AddScoped<CalculatorHandler>()
-                .BuildServiceProvider();
+                .BuildServiceProvider(); 
 
             var calculatorHandler = serviceProvider.GetRequiredService<CalculatorHandler>();
             var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
