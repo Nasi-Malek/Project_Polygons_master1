@@ -8,8 +8,7 @@ using ShapeApp.Controller;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Project_Polygons;
-using System;
+
 
 namespace Project_Polygons
 {
