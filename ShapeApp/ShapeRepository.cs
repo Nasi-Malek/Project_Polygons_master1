@@ -13,6 +13,7 @@ namespace ShapeApp
         {
             _context = context;
         }
+
         public void SaveShape(string shapeName, string parameters, double area, double perimeter)
         {
             var record = new ShapeRecord
@@ -21,7 +22,8 @@ namespace ShapeApp
                 Parameters = parameters,
                 Area = area,
                 Perimeter = perimeter,
-                CalculationDate = DateTime.Now
+                CalculationDate = DateTime.Now,
+                IsDeleted = false
             };
             _context.ShapeRecords.Add(record);
             _context.SaveChanges();
@@ -29,20 +31,27 @@ namespace ShapeApp
 
         public List<ShapeRecord> GetAllShapes()
         {
-            return _context.ShapeRecords.ToList();
+            return _context.ShapeRecords.Where(sr => !sr.IsDeleted).ToList();
         }
+
         public bool UpdateShape(int id, string updatedParameters, double updatedArea, double updatedPerimeter)
         {
             var record = _context.ShapeRecords.Find(id);
-            if (record == null) return false;
+            if (record == null || record.IsDeleted)
+            {
+                return false;
+            }
 
             record.Parameters = updatedParameters;
             record.Area = updatedArea;
             record.Perimeter = updatedPerimeter;
+            record.CalculationDate = DateTime.Now; 
 
+            _context.ShapeRecords.Update(record);
             _context.SaveChanges();
             return true;
         }
+
         public bool DeleteShape(int id)
         {
             var record = _context.ShapeRecords.Find(id);
@@ -55,21 +64,7 @@ namespace ShapeApp
 
         public ShapeRecord? GetShapeById(int id)
         {
-            return _context.ShapeRecords.Find(id);
+            return _context.ShapeRecords.FirstOrDefault(sr => sr.Id == id);
         }
-
-        public bool RestoreShape(int id)
-        {
-            var record = _context.ShapeRecords
-                .IgnoreQueryFilters()
-                .FirstOrDefault(sr => sr.Id == id && sr.IsDeleted);
-            if (record == null) return false;
-
-            record.IsDeleted = false;
-            _context.SaveChanges();
-            return true;
-        }
-
     }
 }
-

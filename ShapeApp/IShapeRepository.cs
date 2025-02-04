@@ -11,5 +11,4 @@ namespace ShapeApp
         bool DeleteShape(int id);
         ShapeRecord? GetShapeById(int id);
     }
-
 }

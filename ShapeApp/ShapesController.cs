@@ -13,7 +13,7 @@ namespace ShapeApp
         private readonly RhombusController _rhombusController;
         private readonly Dictionary<string, Action> _shapeOptions;
 
-        // Inject dependencies via the constructor
+
         public ShapesController(
             IShapeRepository repository,
             RectangleController rectangleController,
@@ -27,9 +27,10 @@ namespace ShapeApp
             _triangleController = triangleController;
             _rhombusController = rhombusController;
 
-            // Use injected handlers
+
             _shapeOptions = new Dictionary<string, Action>
                         {
+
                             { "Rectangle", _rectangleController.ControllerRectangle },
                             { "Parallelogram", _parallelogramController.ControllerParallelogram },
                             { "Triangle", _triangleController.ControllerTriangle },
@@ -116,9 +117,9 @@ namespace ShapeApp
             int id = GetValidId("Enter the ID of the shape to update: ");
             var shapeRecord = _repository.GetShapeById(id);
 
-            if (shapeRecord == null)
+            if (shapeRecord == null || shapeRecord.IsDeleted)
             {
-                AnsiConsole.Markup("[red]Shape not found.[/]");
+                AnsiConsole.Markup("[red]Shape not found or has been deleted. Please restore it before updating.[/]");
                 Console.ReadKey();
                 return;
             }
@@ -179,5 +180,6 @@ namespace ShapeApp
 
             Console.ReadKey();
         }
+
     }
 }
